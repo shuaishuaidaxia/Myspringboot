@@ -20,6 +20,10 @@ spring:
       poll-interval: 3000
       quiet-period: 1000
 #      解决重启之后的404错误
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
 
 mybatis:
   mapper-locations: classpath:/Mappers/*.xml
