@@ -1,10 +1,13 @@
 package com.example.demo4.po;
 
+import com.example.demo4.utlil.ActionsLogsAuditListener;
+
 import javax.persistence.*;
 
 /*jpa对应的实体表*/
-@Entity
-@Table(name = "ta_user")
+@Entity  //声明类为实体或表
+@Table(name = "ta_user")  //声明表名
+@EntityListeners({ActionsLogsAuditListener.class})
 public class UserJpa {
 
     @Id  //主键
@@ -14,6 +17,10 @@ public class UserJpa {
     private String name;
     @Column
     private  String password;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "roleid")
+    private Role role;
 
     public Integer getId() {
         return id;

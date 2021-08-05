@@ -24,7 +24,7 @@ public class tsetUserController {
 
     @Resource
     private MockMvc mockMvc;
-
+/*UserController测试类*/
     @Test
     public void test() throws Exception {
         //构建请求

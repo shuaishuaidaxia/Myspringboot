@@ -30,7 +30,7 @@ public class UserController {
     @GetMapping("user/name/{userName}")
     @ResponseBody
     @ApiOperation(value = "通过用户查询用户对象")
-    @ApiImplicitParam(name = "userName",value = "用户名称",required = true,paramType = "path")
+    @ApiImplicitParam(name = "userName",value = "用户名称",required = true,paramType = "path")  //api文档
     public User queryUserByName(@PathVariable String userName)
     {
         return userService.queryUserByName(userName);
@@ -85,21 +85,6 @@ public class UserController {
     public Map<String,Object>updateUser(@RequestBody User user)
     {
         Map<String,Object>map=new HashMap<>();
-//        try {
-//            userService.updateUser(user);
-//            map.put("code",200);
-//            map.put("msg","修改用户成功！");
-//        }catch (ParamsException p)
-//        {
-//            map.put("code",p.getCode());
-//            map.put("msg",p.getMsg());
-//            p.printStackTrace();
-//        }catch (Exception e)
-//        {
-//            map.put("code",500);
-//            map.put("msg","修改用户失败!");
-//            e.printStackTrace();
-//        }
         userService.updateUser(user);
         map.put("code",200);
         map.put("msg","修改成功!");
