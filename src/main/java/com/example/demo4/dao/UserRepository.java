@@ -32,7 +32,9 @@ public interface UserRepository extends JpaRepository<UserJpa,Integer>{
 
     Page<UserJpa> findByName(String name,Pageable pageable);
 
-    @Query(nativeQuery = true,value = "select u.id,u.name,u.password,r.rolename from ta_user as u inner join role as r on u.roleid = r.roleid group by u.id")
+    @Query(nativeQuery = true,value = "select u.id,u.name,u.password,r.rolename from ta_user as u inner join role as r on u.roleid = r.roleid where u.is_deleted = false group by u.id")
     List<UserRoledao> findViewInfo();
+
+
 }
 

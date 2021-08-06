@@ -16,6 +16,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,7 +36,7 @@ public class UserDaoTest {
     @Test
     public void testadd(){
         UserJpa userJpa=new UserJpa();
-        userJpa.setName("userjpa04");
+        userJpa.setName("userjpa06");
         userJpa.setPassword("123456");
         userRepository.save(userJpa);
     }
@@ -53,9 +55,10 @@ public class UserDaoTest {
     }
     @Test
     public void deletebyid(){
-        UserJpa userJpa=new UserJpa();
-        userJpa.setId(50);
-        System.out.println("ddddd"+userRepository.testdeletebyid(userJpa.getId()));
+        UserJpa userJpa = new UserJpa();
+        userJpa.setId(31);
+        userRepository.delete(userJpa);
+        System.out.println("ddddd");
     }
     @Test
     public void pagefind() throws Exception{
@@ -89,5 +92,13 @@ public class UserDaoTest {
              UserJpa userJpa=userJpaOptional.get();
             System.out.println(userJpa.toString());
         }
+    }
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    @Test
+    public void testEM(){
+     UserJpa userJpa = entityManager.find(UserJpa.class,57);
+        System.out.println(userJpa.toString());
     }
 }

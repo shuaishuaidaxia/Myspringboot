@@ -60,4 +60,9 @@ public class ActionsLogsAuditListener {
         this.logger.info("{} [{}] {}", this.LOG_PREFIX, "删除操作之后", LOG_POSTFIX);
     }
 
+    @PostLoad
+    private void postLoad(Object entity) {
+        this.logger.info("{} [{}] {}", this.LOG_PREFIX, "查询操作", LOG_POSTFIX);
+    }
+
 }
